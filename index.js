@@ -19,23 +19,29 @@ const questions = [
         name:'colorShape'
     }]
 
-    function shapeLogo({ logoText, colorText, logoShape, colorShape}){
-        let shape = logoShape
-        switch(shape){
+    function shapeLogo(logoText, colorText, logoShape, colorShape){
+        //let shape = logoShape
+        switch(logoShape){
             case 'Circle': 
-                return new Circle(logoText, colorText, colorShape);
+                shape = new Circle(logoText, colorText, colorShape);
+            break;
             case 'Triangle': 
-                return new Triangle(logoText, colorText, colorShape);
+                shape = new Triangle(logoText, colorText, colorShape);
+            break;
             case 'Square': 
-                return new Square(logoText, colorText, colorShape);
+                shape = new Square(logoText, colorText, colorShape);
+            break;
         } 
+        return shape
     };
 
 
 inquirer.default.prompt(questions)
 .then((answers)=>{
-     const shapes = new shapeLogo(answers)
-        fs.writeFile("Logo.svg", shapes.render(), (err)=>
+    //console.log(answers)
+    const logo = new shapeLogo(answers.logoText, answers.colorText, answers.logoShape, answers.colorShape);
+
+        fs.writeFile("Logo.svg", logo.render(), (err)=>
         {if (err){
            console.log("Something went wrong, please try again!");}
         else{
