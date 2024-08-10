@@ -1,0 +1,4 @@
+<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        <rect width="200" height="200" x="0" y="0" fill="yellow" />
+        <text x="100" y="120" fill="blue" text-anchor='middle' font-size="60">kst</text>
+        </svg>
